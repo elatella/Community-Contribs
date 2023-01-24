@@ -1,0 +1,21 @@
+stages:
+  - info
+  - deploy
+
+info:
+  stage: info
+  script:
+    - echo "This is your first stage (ツ)"
+
+deploy:
+  stage: deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  tags:
+    - openshift-runner
+  image: registry.puzzle.ch/cicd/alpine-base:latest
+  script:
+    - oc login --token=${OC_TOKEN} --server=<insert-your-server-address>
+    - helm repo add defectdojo 'https://raw.githubusercontent.com/DefectDojo/django-DefectDojo/helm-charts'
+    - helm repo update
+    - helm upgrade --install defectdojo -f values-nonprod.yaml -f values-prod.yaml --set admin.password=${ADMIN_PASSWORD} --set extraSecrets.DD_SOCIAL_AUTH_KEYCLOAK_SECRET=${KEYCLOAK_SECRET} --set postgresql.auth.password=${POSTGRESQL_PASSWORD} --namespace <insert-your-namespace-here> defectdojo/defectdojo
