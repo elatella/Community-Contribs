@@ -12,9 +12,10 @@ To adapt these settings one needs to change the placeholders inside the values.y
 DefectDojo is being deployed via a Gitlab CI/CD Pipeline, whenever a change in main occurs.
 
 When deploying this repo for the first time via Gitlab, one has to modify the .gitlab-ci.yml and insert the project specific values (e.g. namespace), replacing the placeholders (e.g. <your-namespace>). In addition the following Secrets should be added in Settings -> CI/CD -> Variables
-    -ADMIN_PASSWORD
-    -POSTGRESQL_PASSWORD
-    -OC_TOKEN
+
+    - ADMIN_PASSWORD
+    - POSTGRESQL_PASSWORD
+    - OC_TOKEN
 
 The OC Token has to first be generated, in order to connect your Gitlab CICD Pipeline to automatically deploy your latest versions on Openshift.
 To achieve this, follow these steps:
