@@ -4,9 +4,7 @@ This repo contains the modified values-nonprod.yaml for the helm chart of Defect
 Any changes made for the productive environment can be stored in values-prod.md.
 
 To start one needs to create a new Open Project. For this we used the oc tool. After signing into Openshift via the CLI, one can create a new project by:
-
  	`oc new-project <project-name>`
-	## further commands?
 
 The helm repo contains a setup for Prometheus.
 To adapt these settings one needs to change the placeholders inside the values.yaml (e.g. <insert webhost address>).
