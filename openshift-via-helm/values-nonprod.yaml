@@ -116,19 +116,8 @@ spec:
 #   DD_SOCIAL_AUTH_AUTH0_SECRET: 'xxx'
 extraConfigs:
   DJANGO_METRICS_ENABLED: "True" ### to enable prometheus
-  ### Keycloak settings
-  DD_SESSION_COOKIE_SECURE: "True"
-  DD_CSRF_COOKIE_SECURE: "True"
-  DD_SECURE_SSL_REDIRECT: "True"
-  DD_SOCIAL_AUTH_KEYCLOAK_OAUTH2_ENABLED: "True"
-  DD_SOCIAL_AUTH_KEYCLOAK_PUBLIC_KEY: <insert your keycloak public key>
-  DD_SOCIAL_AUTH_KEYCLOAK_KEY: <insert your value here>
-  DD_SOCIAL_AUTH_KEYCLOAK_AUTHORIZATION_URL: <insert your value here>
-  DD_SOCIAL_AUTH_KEYCLOAK_ACCESS_TOKEN_URL: <insert your value here>
-  DD_SOCIAL_AUTH_KEYCLOAK_LOGIN_BUTTON_TEXT: <insert your value here>
 
-extraSecrets:
-  DD_SOCIAL_AUTH_KEYCLOAK_SECRET:
+# extraSecrets:
 # To add (or override) extra variables which need to be pulled from another configMap, you can
 # use extraEnv. For example:
 # extraEnv:
